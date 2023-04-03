@@ -1,0 +1,8 @@
+#!/bin/sh
+# 控制前执行 lint
+
+. "$(dirname "$0")/_/husky.sh"
+
+#npx --no-install lint-staged
+
+npx lint-staged

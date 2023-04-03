@@ -1,0 +1,9 @@
+#!/bin/sh
+# 控制提交信息
+
+# shellcheck source=./_/husky.sh
+. "$(dirname "$0")/_/husky.sh"
+
+# --no-install 参数表示强制 npx 使用项目中 node_modules 目录中的 commitlint 包
+# $1 是上次提交填的信息吗
+npx --no -- commitlint --edit $1
