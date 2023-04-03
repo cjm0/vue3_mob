@@ -17,7 +17,12 @@
     "prettier": "prettier --write src",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .eslintignore"
   },
+  "lint-staged": {
+    "src/**/*.{vue,js,jsx,ts,tsx}": [
 
+      "git add"
+    ]
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "pinia": "^2.0.26",

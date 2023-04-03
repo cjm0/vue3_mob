@@ -1,6 +1,6 @@
 <template>
   <div class="home_index">
-    <p v-for="item of state.tables" ref="ipt">{{ item.age }}</p>
+    <p v-for="(item, index) in state.tables" :key="index" ref="ipt">{{ item.age }}</p>
   </div>
   <HelloWorld class="a" name="cjm" @click="onText" msg="false" @on-text="onText" ref="hw" v-model="iptVal"></HelloWorld>
   <p>iptVal {{ iptVal }}</p>
