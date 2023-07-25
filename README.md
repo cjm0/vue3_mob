@@ -1,6 +1,6 @@
 # vue3
 
-vue3 项目模版
+vue3 vite4 移动端项目模版
 
 ## 快速开始
 
@@ -12,13 +12,13 @@ npm install
 
 npm run dev 本地开发
 
-npm run build 打包-env.test 无 ts 校验
+npm run build 打包 env.test 无 ts 校验
 
-npm run test 打包-env.test
+npm run test 打包 env.test
 
-npm run pre 打包-env.pre
+npm run pre 打包 env.pre
 
-npm run prod 打包-env.prod
+npm run prod 打包 env.prod
 
 npm run preview 预览
 
@@ -40,6 +40,8 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 ## 参考地址
+
+[Vue 3](https://cn.vuejs.org/guide/introduction.html)
 
 [Vite Configuration Reference](https://vitejs.dev/config/)
 

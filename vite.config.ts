@@ -64,7 +64,7 @@ export default defineConfig(async ({ mode, command }) => {
         }
       }),
       vueJsx(),
-      // splitVendorChunkPlugin(), // 将 chunk 分割为 index 和 vendor
+      splitVendorChunkPlugin(), // 将 chunk 分割为 index 和 vendor
       !onlyESM && legacy({ // 自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill
         targets: ['last 2 versions and not dead, > 1%, Firefox ESR', 'not IE 11'], // 传统浏览器目标
         renderLegacyChunks: true, // 额外编译一份针对传统浏览器的代码
@@ -144,17 +144,17 @@ export default defineConfig(async ({ mode, command }) => {
           entryFileNames: `assets/js/[name].[hash].js`, // 入口文件 [hash8] [hash10]
           chunkFileNames: `assets/js/[name].[hash].js`, // 页面文件
           assetFileNames: `assets/[ext]/[name].[hash][extname]`, // 资源文件
-          manualChunks: { // 定义分块
-             'home': [
-                './src/pages/home.vue',
-              ],
-              'about': [
-                './src/pages/about.vue',
-              ],
-              '404': [
-                './src/pages/error/index.vue',
-              ],
-          }
+          // manualChunks: { // 定义分块
+          //    'home': [
+          //       './src/pages/home.vue',
+          //     ],
+          //     'about': [
+          //       './src/pages/about.vue',
+          //     ],
+          //     '404': [
+          //       './src/pages/error/index.vue',
+          //     ],
+          // }
           /* manualChunks: id => {
             // 将 node_modules 中的代码单独打包成一个 JS 文件
             if (id.includes('node_modules')) {

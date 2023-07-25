@@ -25,7 +25,7 @@ const state = reactive({
   num: 10
 })
 const ipt = ref<HTMLInputElement | []>([])
-const hw = ref<InstanceTyp<typeof HelloWorld> | null>(null)
+const hw = ref<InstanceType<typeof HelloWorld> | null>(null)
 const iptVal = ref('')
 const showModal = ref(false)
 

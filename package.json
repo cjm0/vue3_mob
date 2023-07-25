@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "run-p vite build --mode test",
-    "test": "run-p type-check vite build --mode test",
-    "pre": "run-p type-check vite build --mode pre",
-    "prod": "run-p type-check vite build --mode prod",
+    "build": "vite build --mode test",
+    "test": "run-p type-check && vite build --mode test",
+    "pre": "run-p type-check && vite build --mode pre",
+    "prod": "run-p type-check && vite build --mode prod",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "test:unit": "vitest",
@@ -19,7 +19,8 @@
   },
   "lint-staged": {
     "src/**/*.{vue,js,jsx,ts,tsx}": [
-
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {
