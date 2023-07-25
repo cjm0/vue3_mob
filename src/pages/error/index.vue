@@ -1,5 +1,10 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <div class="error_index">
+    <p class="text">页面不存在，请检查路径~</p>
     <!-- <van-empty>
       <p class="text">页面不存在，请检查路径~</p>
       <van-button class="btn" round type="info" @click="goHome">去首页
@@ -8,11 +13,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
-<style lang="less">
+<style scoped lang="less">
 .error_index {
   text-align: center;
   .text {

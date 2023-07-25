@@ -1,3 +1,9 @@
+/**
+ * @Description : 配置数据 $config 挂载到 window
+ * @Author      : chenjianmin
+ * @Date        : 2023-04-03 17:02:46
+ */
+
 // Browser environment
 const inBrowser: boolean = typeof window !== 'undefined'
 const inWeex: boolean = typeof window.WXEnvironment !== 'undefined' && !!window.WXEnvironment.platform

@@ -1,26 +1,33 @@
-/* eslint-env node */
+// 官方中文文档：https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files
+
 require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
+  env: {
+    browser: true,
+    node: true
+  },
   extends: [
-    'plugin:vue/vue3-essential',
     'eslint:recommended',
+    'plugin:vue/vue3-essential', // 只检查基本的、最重要的语法
+    // 'plugin:vue/vue3-strongly-recommended', // 严格检查 Vue 组件代码，对语法和规范都进行检查
+    // 'plugin:vue/vue3-recommended', // 推荐的语法检查规范
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier',
   ],
-  overrides: [
+  overrides: [ // 为特定类型文件指定处理器
     {
       files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}'],
       extends: ['plugin:cypress/recommended'],
     },
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: 'latest', // 受支持的最新版本
   },
   rules: {
-    'prettier/prettier': 'off',
-    'vue/multi-word-component-names': 'off',
+    'prettier/prettier': 0,
+    'vue/multi-word-component-names': 0,
 
     'no-unused-vars': 2, // 不要定义未使用的变量
     'no-const-assign': 2, // 避免修改使用 const 声明的变量
@@ -31,7 +38,7 @@ module.exports = {
     'no-new-require': 2, // 禁止使用 new require
     'no-redeclare': 2, // 不要重复声明变量
     'no-self-assign': 2, // 避免将变量赋值给自己
-    'no-return-assign': 2, // return报表中不使用赋值被认为是最佳做法
+    'no-return-assign': 2, // return 报表中不使用赋值被认为是最佳做法
     'no-self-compare': 2, // 避免将变量与自己进行比较操作
     'no-template-curly-in-string': 2, // 正确使用 ES6 中的字符串模板
     'no-unreachable': 2, // return，throw，continue 和 break 后不要再跟代码
@@ -39,16 +46,16 @@ module.exports = {
     'no-unused-expressions': 2, // 禁止无用的表达式
     'no-multi-str': 2, // 字符串不能用\换行
 
-    indent: [0, 2], // 2 4个空格 [1, 2] [1, 4] [1, 'tab']
-    quotes: [0, 'single'], // 使用单引号
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0, // allow debugger during development
-    'no-alert': process.env.NODE_ENV === 'production' ? 2 : 0, // alert
+    'indent': [0, 2], // 2 4个空格 [1, 2] [1, 4] [1, 'tab']
+    'quotes': [0, 'single'], // 使用单引号
+    'no-debugger': 0, // allow debugger during development
+    'no-alert': 0, // alert
     'no-console': 0, // 提示console
     'no-unneeded-ternary': 1, // 禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     'keyword-spacing': 1, // 关键字后面加空格
     'comma-spacing': 1, // 逗号后面加空格
     'brace-style': 1, // else 关键字要与花括号保持在同一行
-    curly: 1, // 多行 if 语句的的括号不能省
+    'curly': 1, // 多行 if 语句的的括号不能省
     'no-negated-in-lhs': 1, // 在in操作符左边的操作项不能用! 例如这样写不对的：if ( !a in b) { //dosomething }
     'no-obj-calls': 1, // 禁止把全局对象当函数调用，比如下面写法错误的：Math(), JSON()
     'operator-linebreak': 1, // 对于三元运算符 ? 和 : 与他们所负责的代码处于同一行
@@ -64,7 +71,6 @@ module.exports = {
     'no-dupe-class-members': 1, // 类中不要定义冗余的属性
     'no-dupe-keys': 1, // 对象字面量中不要定义重复的属性
     'no-duplicate-case': 1, // switch 语句中不要定义重复的 case 分支
-    'no-duplicate-imports': 1, // 同一模块有多个导入时一次性写完
     'no-empty-pattern': 1, // 不要解构空值
     'no-eval': 1, // 不要使用 eval()
     'no-extra-boolean-cast': 1, // 避免不必要的布尔转换
@@ -100,15 +106,16 @@ module.exports = {
     'template-curly-spacing': 1, // 模板字符串中变量前后不加空格
     'wrap-iife': 1, // 自调用匿名函数 (IIFEs) 使用括号包裹
 
+    'no-duplicate-imports': 0, // 同一模块有多个导入时一次性写完
+    'semi': 0, // 不要使用分号
     'one-var': 0, // 每个 var 关键字单独声明一个变量
     'padded-blocks': 0, // 代码块中避免多余留白
     'quote-props': 0,
     'generator-star-spacing': 0, // allow async-await
-    camelcase: [0, { properties: 'never' }], // 对于变量和函数名统一使用驼峰命名法 对属性字段不做限制
-    eqeqeq: 0, // 始终使用 === 替代 ==
+    'camelcase': [0, { properties: 'never' }], // 对于变量和函数名统一使用驼峰命名法 对属性字段不做限制
+    'eqeqeq': 0, // 始终使用 === 替代 ==
     'prefer-const': 0, // 不变量使用 const
     'no-extra-semi': 0, // 多余的冒号
-    semi: 0, // 不要使用分号
     'no-extend-native': 0, // 不要扩展原生对象
     'space-before-function-paren': 0, // 函数声明时括号与函数名间加空格
     'no-undef': 0, // 使用浏览器全局变量时加上 window. 前缀
@@ -134,10 +141,12 @@ module.exports = {
     'no-useless-computed-key': 0, // 避免使用不必要的计算值作对象属性
     'space-before-blocks': 0, // 代码块首尾留空格
     'yield-star-spacing': 0, // yield * 中的 * 前后都要有空格
-    yoda: 0, // 请书写优雅的条件语句（avoid Yoda conditions）
+    'yoda': 0, // 请书写优雅的条件语句（avoid Yoda conditions）
     'no-multiple-empty-lines': 0, // 不允许有连续多行空行
     'vetur-validation-template': 0, // Elements in iteration expect to have 'v-bind:key' directives
     'no-tabs': 0, // Unexpected tab character
     'no-new': 0, // new 创建对象实例后需要赋值给变量 new Vue() 允许单独用
   },
+  // noInlineConfig: true, // 禁用内联注释
+  // reportUnusedDisableDirectives: true // 报告未使用的 eslint-disable 注释
 }

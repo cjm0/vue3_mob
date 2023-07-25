@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance, useAttrs } from 'vue'
-const { proxy, appContext } = getCurrentInstance()
+const { proxy } = getCurrentInstance()
 
 defineProps({
   msg: {
@@ -25,7 +25,7 @@ defineExpose({
 <template>
   <div class="greetings">
     <h1 class="green" @click="emit('on-text', 'cjm')">{{ msg }}</h1>
-    <input type="text" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
+    <input type="text" :value="modelValue" @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)">
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a>

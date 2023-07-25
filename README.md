@@ -1,10 +1,37 @@
 # vue3
 
-This template should help get you started developing with Vue 3 in Vite.
+vue3 项目模版
 
-## Recommended IDE Setup
+## 快速开始
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```sh
+
+git clone git@github.com:cjm0/vue3_mob.git
+
+npm install
+
+npm run dev 本地开发
+
+npm run build 打包-env.test 无 ts 校验
+
+npm run test 打包-env.test
+
+npm run pre 打包-env.pre
+
+npm run prod 打包-env.prod
+
+npm run preview 预览
+
+npm run lint lint 检查
+```
+
+## 编辑器插件
+
+[VSCode](https://code.visualstudio.com/)
+
+[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
+
+[TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Type Support for `.vue` Imports in TS
 
@@ -12,57 +39,26 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 参考地址
 
-## Customize configuration
+[Vite Configuration Reference](https://vitejs.dev/config/)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[Vitest](https://vitest.dev/)
 
-## Project Setup
+[Cypress](https://www.cypress.io/)
 
-```sh
-npm install
-```
+[ESLint](https://eslint.org/)
 
-### Compile and Hot-Reload for Development
+## 版本
 
-```sh
-npm run dev
-```
+- node >= 16
 
-### Type-Check, Compile and Minify for Production
+- vue ^3.2.47
 
-```sh
-npm run build
-```
+- vite ^4.1.4
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+- vue-router ^4.1.6
 
-```sh
-npm run test:unit
-```
+- pina ^2.0.32
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- eslint ^8.34.0

@@ -1,3 +1,8 @@
+/*
+ * @Description : d
+ * @Author      : chenjianmin
+ * @Date        : 2023-04-03 18:25:22
+ */
 import axios from 'axios'
 
 // axios.defaults.withCredentials = true // 是否携带cookie信息

@@ -10,7 +10,15 @@
       "@assets/*": ["./src/assets/*"],
       "@utils/*": ["./src/assets/utils/*"],
       "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"]
-    }
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@service/*": ["./src/service/*"],
+      "@stores/*": ["./src/stores/*"]
+    },
+    "strict": true,
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false
   }
 }

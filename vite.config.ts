@@ -1,8 +1,10 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+
+// 兼容不支持 ESM 浏览器：https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
+import legacy from '@vitejs/plugin-legacy'
 
 // css 自动加前缀：https://github.com/postcss/autoprefixer#readme
 import autoprefixer from 'autoprefixer';
@@ -20,6 +22,9 @@ function getUrl(url: string) {
   return fileURLToPath(new URL(url, import.meta.url))
 }
 
+// 只使用 ESM 现代浏览器
+const onlyESM = true
+
 // 文档：https://cn.vitejs.dev/config/shared-options.html
 export default defineConfig(async ({ mode, command }) => {
   const env = loadEnv(mode, getUrl('./env')) // 加载 .env 文件
@@ -27,7 +32,7 @@ export default defineConfig(async ({ mode, command }) => {
 
   return {
     root: process.cwd(), // 项目根目录（index.html 文件所在的位置）
-    base: '/', // 开发或生产环境服务的公共基础路径 /foo/
+    base: env.VITE_APP_BASE_URL, // 开发或生产环境服务的公共基础路径 /foo/
     publicDir: 'public', // 不被处理的文件放这里，设定为 false 可以关闭此项功能
     cacheDir: 'node_modules/.vite', // 缓存文件目录，可手动删除以更新
     envDir: 'env', // 用于加载 .env 文件的目录
@@ -37,15 +42,35 @@ export default defineConfig(async ({ mode, command }) => {
         '@assets': getUrl('./src/assets'),
         '@utils': getUrl('./src/assets/utils'),
         '@components': getUrl('./src/components'),
+        '@hooks': getUrl('./src/hooks'),
         '@pages': getUrl('./src/pages'),
+        '@service': getUrl('./src/service'),
+        '@stores': getUrl('./src/stores'),
       },
+    },
+    define: {
+      __VUE_OPTIONS_API__: true, // true-启用 false-禁用选项API支持，默认 true
+      __VUE_PROD_DEVTOOLS__: BUILD_ENV !== 'prod', // 在生产中启用/禁用 DEVTOOLS 支持，默认 false
     },
 
     // 插件
     plugins: [
-      vue(),
+      vue({
+        template: {
+          compilerOptions: {
+            // 将所有标签名 custom- 开头的都视为自定义元素
+            isCustomElement: (tag) => tag.startsWith('custom-')
+          }
+        }
+      }),
       vueJsx(),
-      splitVendorChunkPlugin(), // 将 chunk 分割为 index 和 vendor
+      // splitVendorChunkPlugin(), // 将 chunk 分割为 index 和 vendor
+      !onlyESM && legacy({ // 自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill
+        targets: ['last 2 versions and not dead, > 1%, Firefox ESR', 'not IE 11'], // 传统浏览器目标
+        renderLegacyChunks: true, // 额外编译一份针对传统浏览器的代码
+        // polyfills: ['es.promise.finally'], // 为传统浏览器注入 polyfill，根据 @babel/preset-env useBuiltIns: 'usage' 自动注入
+        // modernPolyfills: ['es.promise.finally'], // 为现代浏览器注入 polyfill
+      }),
       visualizer({
         emitFile: false, // 打包到项目根目录
         filename: 'report.html',
@@ -106,8 +131,10 @@ export default defineConfig(async ({ mode, command }) => {
     // 打包输出处理
     build: {
       outDir: 'dist', // 指定输出路径
+      // Vite 只处理语法转译，默认不包含任何 polyfill
       target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'], // 最终构建的浏览器兼容目标
-      sourcemap: BUILD_ENV !== 'prod', // 非线上环境
+      sourcemap: BUILD_ENV !== 'prod', // 非生产环境
+      cssCodeSplit: true, // 启用/禁用 CSS 代码拆分
       reportCompressedSize: false, // true gzip 压缩大小报告，有大文件可关闭提高速度
       assetsInlineLimit: 4096, // 小于 4kb 的资源内联为 base64，0 完全禁用此项
       chunkSizeWarningLimit: 500, // 500kb 触发警告的 chunk 大小
@@ -117,6 +144,17 @@ export default defineConfig(async ({ mode, command }) => {
           entryFileNames: `assets/js/[name].[hash].js`, // 入口文件 [hash8] [hash10]
           chunkFileNames: `assets/js/[name].[hash].js`, // 页面文件
           assetFileNames: `assets/[ext]/[name].[hash][extname]`, // 资源文件
+          manualChunks: { // 定义分块
+             'home': [
+                './src/pages/home.vue',
+              ],
+              'about': [
+                './src/pages/about.vue',
+              ],
+              '404': [
+                './src/pages/error/index.vue',
+              ],
+          }
           /* manualChunks: id => {
             // 将 node_modules 中的代码单独打包成一个 JS 文件
             if (id.includes('node_modules')) {

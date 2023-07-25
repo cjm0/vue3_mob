@@ -1,5 +1,8 @@
-node_modules
-dist
-public
+.husky/
+.vscode/
+dist/
+env/
+node_modules/
+public/
 *.d.ts
 vite.config.ts

@@ -1,3 +1,9 @@
+/**
+ * @Description : 封装 $cookie 挂载到 window
+ * @Author      : chenjianmin
+ * @Date        : 2023-04-03 17:02:46
+ */
+
 interface param {
   name: string,
   value: any,

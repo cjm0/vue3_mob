@@ -64,9 +64,32 @@ function handleFontSize() {
   })
 }
 
+// 注册 serviceWorker
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    /*
+      * 为什么在 onload 后加载：https://web.dev/service-workers-registration
+      * 换 serviceWorker 路径需要保持旧的 serviceWorker 文件防止用户读缓存失败
+    */
+    window.addEventListener('load', () => {
+      // scope 参数用来指定控制的子目录，默认 '/'，根网域下的所有内容
+      window.navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' })
+      .then((registration) => { // 注册成功
+        console.log('serviceWorker register success with scope: ', registration.scope)
+      })
+      .catch((err) => { // 注册失败
+        console.error('serviceWorker register fail: ', err);
+      })
+    })
+  } else {
+    console.error('serviceWorker 不支持')
+  }
+}
+
 onMounted(() => {
   fastClick()
   fontSize()
+  registerServiceWorker()
 })
 </script>
 
