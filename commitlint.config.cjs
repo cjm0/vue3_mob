@@ -5,14 +5,10 @@ module.exports = {
     'body-leading-blank': [1, 'always'],
     'footer-leading-blank': [1, 'always'],
 
-    'scope-case': [2, 'always', 'lower-case'], // 默认小写格式-scope
-    'subject-case': [0], // 大小写不做校验-subject
-    'subject-empty': [2, 'never'],
-    'subject-full-stop': [2, 'never', '.'], // 标题不能以 . 结束
-
-    'type-case': [2, 'always', 'lower-case'], // 默认为小写-type
-    'type-empty': [2, 'never'], // 是否可为空-type
-    'type-enum': [ // 类型字段-type
+    // type
+    'type-empty': [2, 'never'], // 不能为空
+    'type-case': [2, 'always', 'lower-case'], // 小写格式
+    'type-enum': [ // 类型字段
       2,
       'always',
       [
@@ -31,5 +27,13 @@ module.exports = {
         'chore', // 不修改src或者test的其余修改，例如构建过程或辅助工具的变动
       ],
     ],
+
+    // scope
+    'scope-case': [2, 'always', 'lower-case'], // 小写格式
+
+    // subject
+    'subject-empty': [2, 'never'], // 不能为空
+    'subject-case': [0], // 大小写不做校验
+    'subject-full-stop': [2, 'never', '.'], // 标题不能以 . 结束
   },
 }
