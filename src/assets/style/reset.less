@@ -265,16 +265,16 @@ button {
 }
 /* 设置input的placeholder的文本颜色 */
 input::input-placeholder {
-  color: @disable;
+  color: var(--disable);
 }
 input::-webkit-input-placeholder {
-  color: @disable;
+  color: var(--disable);
 }
 input::-moz-input-placeholder {
-  color: @disable;
+  color: var(--disable);
 }
 input::-ms-input-placeholder {
-  color: @disable;
+  color: var(--disable);
 }
 
 // 衬线字体：标题，局部文字
@@ -301,7 +301,7 @@ body {
     Helvetica, Arial, sans-serif;
   text-align: left;
   box-sizing: border-box;
-  color: @master;
+  color: var(--master);
 
   /* 解决移动设备横竖屏切换时文本大小重新计算问题 */
   -webkit-text-size-adjust: 100% !important;
@@ -318,56 +318,4 @@ body {
   user-select: none;
 }
 
-// 细线
-[class*='v-hairline'] {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform-origin: 0 0;
-    pointer-events: none;
-    box-sizing: border-box;
-    border: 0 solid @line;
-  }
-}
-@media (min-resolution: 2dppx) {
-  [class*='v-hairline'] {
-    &::after {
-      width: 200%;
-      height: 200%;
-      transform: scale(0.5);
-    }
-  }
-}
-@media (min-resolution: 3dppx) {
-  [class*='v-hairline'] {
-    &::after {
-      width: 300%;
-      height: 300%;
-      transform: scale(0.333333);
-    }
-  }
-}
-.v-hairline {
-  &-left::after {
-    border-left-width: 1px;
-  }
-  &-right::after {
-    border-right-width: 1px;
-  }
-  &-top::after {
-    border-top-width: 1px;
-  }
-  &-bottom::after {
-    border-bottom-width: 1px;
-  }
-  &-top-bottom::after {
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-  }
-  &-1::after {
-    border-width: 1px;
-  }
-}
+

@@ -16,7 +16,8 @@ declare interface Window {
 
 // 自定义全局环境变量
 interface ImportMetaEnv {
-  readonly VITE_APP_BUILD_ENV: string
+  readonly VITE_BASE_URL: string
+  readonly VITE_BUILD_ENV: string
   // 更多环境变量...
 }
 interface ImportMeta {

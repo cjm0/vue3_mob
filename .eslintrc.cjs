@@ -33,7 +33,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 0,
-    'vue/multi-word-component-names': 0,
+    'vue/multi-word-component-names': 0, // 要求组件名称总是多个单词
+    'vue/one-component-per-file': 0, // 强制每个组件应该在它自己的文件中
 
     'no-unused-vars': 2, // 不要定义未使用的变量
     'no-const-assign': 2, // 避免修改使用 const 声明的变量

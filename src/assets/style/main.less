@@ -1,0 +1,76 @@
+@import './theme.less';
+@import './reset.less';
+
+#app {
+  max-width: 750px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+// 手型
+.hand {
+  cursor: pointer;
+}
+
+// 清除浮动
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+// 细线
+[class*='v-hairline'] {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 0 solid var(--line);
+  }
+}
+@media (min-resolution: 2dppx) {
+  [class*='v-hairline'] {
+    &::after {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+    }
+  }
+}
+@media (min-resolution: 3dppx) {
+  [class*='v-hairline'] {
+    &::after {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.333333);
+    }
+  }
+}
+.v-hairline {
+  &-left::after {
+    border-left-width: 1px;
+  }
+  &-right::after {
+    border-right-width: 1px;
+  }
+  &-top::after {
+    border-top-width: 1px;
+  }
+  &-bottom::after {
+    border-bottom-width: 1px;
+  }
+  &-top-bottom::after {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+  }
+  &-1::after {
+    border-width: 1px;
+  }
+}

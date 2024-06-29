@@ -1,25 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@pages/home.vue'
+import routerConfig from './router_config.js'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_APP_BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
       component: Home,
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('@pages/about.vue'),
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      name: '404',
-      meta: { auth: false, title: '404页面' },
-      component: () => import('@pages/error/index.vue'),
-    },
+    ...routerConfig
   ],
   sensitive: true, // 区分大小写
   strict: false, // 非严格模式

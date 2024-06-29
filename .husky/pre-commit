@@ -1,7 +1,9 @@
 #!/bin/sh
-# 控制前执行 lint
+
+# 控制 git commit 提交前执行
 
 . "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/common.sh"
 
-#npx --no-install lint-staged
+# npx --no-install lint-staged
 # npx lint-staged

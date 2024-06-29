@@ -1,7 +1,7 @@
 {
   "name": "vue3",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.1.0",
+  "description": "Vue3 + Vite5 Mobie Template",
   "type": "module",
   "scripts": {
     "dev": "vite dev --mode dev",
@@ -9,8 +9,11 @@
     "test": "run-p type-check && vite build --mode test",
     "pre": "run-p type-check && vite build --mode pre",
     "prod": "run-p type-check && vite build --mode prod",
+    "type-check": "vue-tsc --build --force",
     "preview": "vite preview",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "transform": "vite --debug transform",
+    "plugin-transform": "vite --debug plugin-transform",
+    "hmr": "vite --debug hmr",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
@@ -26,6 +29,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.13.0",
+    "axios": "^1.7.2",
     "fastclick": "^1.0.6",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
@@ -68,5 +72,19 @@
     "vite-plugin-vue-devtools": "^7.3.1",
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.21"
+  },
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "前端一锅煮",
+    "email": "1293004002@qq.com"
+  },
+  "homepage": "https://github.com/cjm0/vue3_mob",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cjm0/vue3_mob.git"
+  },
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
   }
 }

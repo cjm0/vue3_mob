@@ -8,10 +8,12 @@ import useFetch from './fetch'
 import useReact from './react'
 import useMouse from './mouse'
 import useEvent from './event'
+import useVuex from './vuex'
 
 export {
   useFetch,
   useReact,
   useMouse,
   useEvent,
+  useVuex,
 }

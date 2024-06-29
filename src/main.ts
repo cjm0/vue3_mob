@@ -2,10 +2,10 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 // 全局配置、公共文件
-import '@assets/css/main.less'
-import "@utils/config"
-import "@assets/common/cookie"
-import axios from "@assets/common/axios"
+import '@assets/style/main.less'
+import "@utils/config.ts"
+import "@utils/cookie.ts"
+import axios from "@utils/axios.ts"
 
 import App from './App.vue'
 import router from './router'
