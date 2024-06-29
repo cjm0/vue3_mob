@@ -58,62 +58,42 @@ progress {
   display: inline-block;
   vertical-align: baseline;
 }
-/*
-* 1.防止现代浏览器将没有「controls」属性的 「audio」元素显示出来
-* 2.去掉 iOS 5 中多余的高度
-*/
+
 audio:not([controls]) {
-  display: none;
-  height: 0;
+  display: none; /* 防止现代浏览器将没有「controls」属性的 「audio」元素显示出来 */
+  height: 0; /* 去掉 iOS 5 中多余的高度 */
 }
-/* Add the correct vertical alignment in Chrome, Firefox, and Opera. */
 progress {
-  vertical-align: baseline;
+  vertical-align: baseline; /* Add the correct vertical alignment in Chrome, Firefox, and Opera. */
 }
 label {
   cursor: pointer;
 }
-/* 修复 IE 7/8/9，Firefox 3 和 Safari 4 中 「hidden」属性不起作用的问题 */
 [hidden] {
-  display: none;
+  display: none; /* 修复 IE 7/8/9，Firefox 3 和 Safari 4 中 「hidden」属性不起作用的问题 */
 }
-/*
-* 为可拖动元素添加拖动的光标，http://jsbin.com/apavod/1/edit
-*/
 [draggable] {
-  cursor: move;
+  cursor: move; /* 为可拖动元素添加拖动的光标，http://jsbin.com/apavod/1/edit */
 }
-/*
-  1. Remove the gray background on active links in IE 10.
-  2. Remove gaps in links underline in iOS 8+ and Safari 8+.
-*/
 a,
 a:focus,
 a:active {
   text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-text-decoration-skip: objects; /* 2 */
   outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // Remove the gray background on active links in IE 10.
+  -webkit-text-decoration-skip: objects; /* Remove gaps in links underline in iOS 8+ and Safari 8+ */
 }
-/*
-* 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
-* 2. 修正 IE8 图片消失bug
-* 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形,http://jsbin.com/aJoTUca/2
-* 4. 让图片支持响应式
-* 5. 去除现代浏览器图片底部的空隙
-* 6. 修复 IE7 图片缩放失真
-*/
 img {
-  border: none;
-  width: auto\9;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
+  border: none; /* 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框 */
+  width: auto\9; /* 修正 IE8 图片消失bug */
+  max-width: 100%; /* 让图片支持响应式 */
+  height: auto; /* 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形,http://jsbin.com/aJoTUca/2 */
+  vertical-align: middle; /* 去除现代浏览器图片底部的空隙 */
+  -ms-interpolation-mode: bicubic; /* 修复 IE7 图片缩放失真 */
+  -webkit-touch-callout: none; /* 禁止图片长按出弹窗 */
 }
-/*修复 IE9 中的「overflow」的怪异表现*/
 svg:not(:root) {
-  overflow: hidden;
+  overflow: hidden; /* 修复 IE9 中的「overflow」的怪异表现 */
 }
 address,
 caption,
@@ -125,17 +105,14 @@ var {
   font-weight: normal;
 }
 strong,
-b {
+b,
+em {
   font-weight: normal;
 }
-em {
-  font-style: normal;
-}
-/* 去除默认的list-style */
 ul,
 ol,
 li {
-  list-style: none;
+  list-style: none; /* 去除默认的list-style */
 }
 caption,
 th {
@@ -151,7 +128,6 @@ h6 {
   font-weight: normal;
 }
 
-/* 修正单个元素 */
 abbr {
   border: 0;
   font-variant: normal;
@@ -166,15 +142,15 @@ hr {
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
-/*网页标记，荧光笔,修正 IE6-11 中没有样式的问题*/
+/* 网页标记，修正 IE6-11 中没有样式的问题 */
 mark {
   background-color: #d2e5ff;
   color: #000;
 }
 /**
-* 增强所有浏览器中 pre 标签中文本的可读性
-* 1. IE 6-7 不支持 pre-wrap
-* 2. pre 标签应当包含滚溢出
+  * 增强所有浏览器中 pre 标签中文本的可读性
+  * 1. IE 6-7 不支持 pre-wrap
+  * 2. pre 标签应当包含滚溢出
 */
 pre {
   white-space: pre;
@@ -183,8 +159,8 @@ pre {
   overflow: auto;
 }
 /**
-* 防止所有浏览器中的<sub>和<sup>影响行高
-* http://jsbin.com/usoyal/1/edit
+  * 防止所有浏览器中的<sub>和<sup>影响行高
+  * http://jsbin.com/usoyal/1/edit
 */
 sub,
 sup {
@@ -204,6 +180,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/*
+  * 统一代码的字体设置
+  * 字体要能明确区分数字 0 和字母 o
+  * Mac 优先使用 Monaco，Windows 优先使用 Consolas
+  * XP自带 Courier New
+  * Windows 7开始自带的 Consolas
+  * Mac上自带的Monaco，Osaka-Mono
+*/
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
 input,
 button,
 textarea,
@@ -213,21 +203,8 @@ select {
   font-weight: inherit;
   outline: none;
   vertical-align: baseline;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 解决 ios 点击链接出现半透明灰色遮罩问题 */
 }
-/* 设置input的placeholder的文本颜色 */
-input::input-placeholder {
-  color: @disable;
-}
-input::-webkit-input-placeholder {
-  color: @disable;
-}
-input::-moz-input-placeholder {
-  color: @disable;
-}
-input::-ms-input-placeholder {
-  color: @disable;
-}
-
 /* 去除默认的拉伸 */
 textarea {
   resize: vertical;
@@ -243,8 +220,8 @@ select {
   text-transform: none;
 }
 /**
-* 修正 Chrome 30- option 中文字无法显示的问题
-* http://jsbin.com/avujas/1/edit
+  * 修正 Chrome 30- option 中文字无法显示的问题
+  * http://jsbin.com/avujas/1/edit
 */
 select:disabled option:checked,
 option:disabled:checked {
@@ -259,93 +236,86 @@ input::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-/*
-* 1. 修正 IE 8/9 box-sizing 被设置为「content-box」的问题
-* 2. 移除 IE 8/9 中多余的内边距
-*/
 input[type='checkbox'],
 input[type='radio'] {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0;
+  box-sizing: border-box; /* 修正 IE 8/9 box-sizing 被设置为「content-box」的问题 */
+  padding: 0; /* 移除 IE 8/9 中多余的内边距 */
 }
-/*
-  1.Correct the cursor style of increment and decrement buttons in Chrome.
-  2.Correct the odd appearance in Chrome and Safari.
-  3.Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
-*/
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-  height: auto;
-} /* 1 */
+  height: auto; /* Correct the cursor style of increment and decrement buttons in Chrome */
+}
 input[type='search'] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-} /* 2 */
+  -webkit-box-sizing: border-box;
+  -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
+}
 input[type='search']::-webkit-search-cancel-button,
 input[type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
-} /* 3 */
-/* 防止 android软键盘把页面挤上去 */
+  -webkit-appearance: none; /* Remove the inner padding and cancel buttons in Chrome and Safari on macOS */
+}
+/* 防止 android 软键盘把页面挤上去 */
 input[type='submit'],
 input[type='reset'],
 input[type='button'],
 button {
-  -webkit-appearance: none;
   cursor: pointer;
+  -webkit-appearance: none;
 }
-/*
-* 统一代码的字体设置
-* 字体要能明确区分数字 0 和字母 o
-* Mac 优先使用 Monaco，Windows 优先使用 Consolas
-* XP自带 Courier New
-* Windows 7开始自带的 Consolas
-* Mac上自带的Monaco，Osaka-Mono
-*/
-code,
-kbd,
-pre,
-samp {
-  font-family: monaco, menlo, consolas, 'courier new', courier, monospace;
+/* 设置input的placeholder的文本颜色 */
+input::input-placeholder {
+  color: @disable;
 }
-
-*::before,
-*::after {
-  box-sizing: inherit;
+input::-webkit-input-placeholder {
+  color: @disable;
+}
+input::-moz-input-placeholder {
+  color: @disable;
+}
+input::-ms-input-placeholder {
+  color: @disable;
 }
 
-/* 字体标准 */
-@font-face {
-  font-family: quote;
-  src: local('SimSun'), local('STSong');
-  unicode-range: U+201c, U+201d, U+2018, U+2019;
-}
-@font-face {
-  font-family: Emoji;
-  src: local('Apple Color Emojiji'), local('Segoe UI Emoji'),
-    local('Segoe UI Symbol'), local('Noto Color Emoji');
-  unicode-range: U+1F000-1F644, U+203C-3299;
-}
-body {
-  font: 400 14px/1 quote, system-ui, -apple-system, Segoe UI, Rototo, Emoji,
-    Helvetica, Arial, sans-serif;
-  -webkit-text-size-adjust: 100% !important;
-  -ms-text-size-adjust: 100% !important;
-  text-size-adjust: 100% !important;
-  text-align: left;
-  color: @master;
-  box-sizing: border-box;
-}
-
-// 衬线字体 标题，局部文字
+// 衬线字体：标题，局部文字
 .font-serif {
   font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
 }
-// 等宽字体，代码显示
+// 等宽字体：代码显示
 .font-mono {
-  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+/* 字体标准 */
+/* @font-face {
+  font-family: quote;
+  src: local('SimSun'), local('STSong');
+  unicode-range: U+201c, U+201d, U+2018, U+2019;
+} */
+@font-face {
+  font-family: Emoji;
+  src: local('Apple Color Emojiji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), local('Noto Color Emoji');
+  unicode-range: U+1F000-1F644, U+203C-3299;
+}
+body {
+  font: 400 14px/1 system-ui, -apple-system, Segoe UI, Rototo, Emoji,
+    Helvetica, Arial, sans-serif;
+  text-align: left;
+  box-sizing: border-box;
+  color: @master;
+
+  /* 解决移动设备横竖屏切换时文本大小重新计算问题 */
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  /* 控制字体渲染时更平滑 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 禁止用户选中文字 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 // 细线

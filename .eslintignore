@@ -4,5 +4,6 @@ dist/
 env/
 node_modules/
 public/
-*.d.ts
-vite.config.ts
+*.md
+*.ts
+*.js

@@ -44,26 +44,6 @@ function fastClick() {
   }
 }
 
-// 微信服务号，用户调整字体大小导致页面错位
-function fontSize() {
-  if (
-    typeof window.WeixinJSBridge == 'object' &&
-    typeof window.WeixinJSBridge.invoke == 'function'
-  ) {
-    handleFontSize()
-  } else {
-    document.addEventListener('WeixinJSBridgeReady', handleFontSize, false)
-  }
-}
-function handleFontSize() {
-  // 设置网页字体为默认大小
-  window.WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 })
-  // 重写设置网页字体大小的事件
-  window.WeixinJSBridge.on('menu:setfont', function () {
-    window.WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 })
-  })
-}
-
 // 注册 serviceWorker
 function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
@@ -88,8 +68,18 @@ function registerServiceWorker() {
 
 onMounted(() => {
   fastClick()
-  fontSize()
   registerServiceWorker()
+
+  /*
+    处理加载报错：
+    * 当 Vite 加载动态导入失败时会触发 vite:preloadError 事件
+    * 重新部署时，托管服务可能会删除之前部署的资源
+    * 用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除
+   */
+  window.addEventListener('vite:preloadError', (event) => {
+    console.error('vite:preloadError', event.payload)
+    window.location.reload() // 刷新页面
+  })
 })
 </script>
 
