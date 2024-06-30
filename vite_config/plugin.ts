@@ -72,19 +72,19 @@ export function createVitePlugins(ISESM, entry, VITE_BUILD_ENV) {
         },
         // 动态修改主题：https://github.com/vadxq/vite-plugin-vconsole/issues/21
         dynamicConfig: {
-          theme: `document.documentElement.classList.contains('dark') ? 'dark' : 'light'`,
+          theme: `document.querySelector('html').getAttribute('data-theme') || 'light'`,
         },
         eventListener: `
           const targetElement = document.querySelector('html'); // 择要监听的元素
           const observerOptions = {
             attributes: true, // 监听属性变化
-            attributeFilter: ['class'] // 只监听class属性变化
+            attributeFilter: ['data-theme'] // 只监听 data-theme 属性变化
           };
 
           // 定义回调函数来处理观察到的变化
           function handleAttributeChange(mutationsList) {
             for(let mutation of mutationsList) {
-              if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
                 if (window && window.vConsole) {
                   window.vConsole.dynamicChange.value = new Date().getTime();
                 }

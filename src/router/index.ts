@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@pages/home.vue'
-import routerConfig from './router_config.js'
+import routerConfig from './router_config.ts'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
