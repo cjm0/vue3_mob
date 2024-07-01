@@ -131,7 +131,7 @@ export function createVitePlugins(ISESM, entry, VITE_BUILD_ENV) {
     // 打包分析，测试和预发环境打开：https://github.com/btd/rollup-plugin-visualizer
     ['test', 'pre'].includes(VITE_BUILD_ENV) && visualizer({
       emitFile: false, // 汇总输出，默认 false
-      filename: './dist/report.html', // 输出地址
+      filename: './report/visualizer.html', // 输出地址
       open: false, // 自动打开
       gzipSize: true, // 生成 gzip 压缩大小报告
     }),

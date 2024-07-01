@@ -9,15 +9,13 @@ lerna-debug.log*
 
 .DS_Store
 node_modules
-dist
+dist/
 dist-ssr
 *.local
 
 # 忽略测试报告
 coverage
-unit-coverage
-unit-ui
-
+/report/
 /cypress/videos/
 /cypress/screenshots/
 

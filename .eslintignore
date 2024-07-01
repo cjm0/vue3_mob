@@ -5,6 +5,7 @@ env/
 node_modules/
 public/
 types/
+report/
 vite_config/
 *.js
 *.ts
