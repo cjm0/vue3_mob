@@ -11,11 +11,19 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-coverage
 *.local
+
+# 忽略测试报告
+coverage
+unit-coverage
+unit-ui
 
 /cypress/videos/
 /cypress/screenshots/
+
+# 忽略 types 自动生成的 ts 类型文件
+/types/auto-imports.d.ts
+/types/components.d.ts
 
 # Editor directories and files
 .vscode/*

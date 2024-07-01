@@ -1,12 +1,12 @@
 // 全局配置、公共文件
-import '@assets/style/main.less'
-import "@utils/config.ts"
-import "@utils/cookie.ts"
-import axios from "@utils/axios.ts"
+import '@/assets/style/main.less'
+import "@/utils/config.ts"
+import "@/utils/cookie.ts"
+import axios from "@/utils/axios.ts"
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import piniaPlugin from '@stores/piniaPlugin'
+import piniaPlugin from '@/stores/piniaPlugin'
 
 import App from './App.vue'
 import router from './router'

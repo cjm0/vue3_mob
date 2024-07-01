@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useReact, useVuex } from '@hooks/index'
+import { useReact, useVuex } from '@/hooks/index'
 
 const [count, setCount] = useReact(0)
 const [list, setName] = useVuex()

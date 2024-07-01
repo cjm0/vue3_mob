@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref, reactive, inject, getCurrentInstance, watch, watchEffect, onMounted, onBeforeUnmount, effectScope, getCurrentScope, onScopeDispose, onRenderTracked, onRenderTriggered, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStoreCounter } from '@stores/counter'
+import { useStoreCounter } from '@/stores/counter'
 
-import HelloWorld from '@components/HelloWorld.vue'
-import Modal from '@components/Modal/index.vue'
-import { useReact, useVuex } from '@hooks/index'
+// import HelloWorld from '@/components/HelloWorld.vue'
+// import Modal from '@/components/Modal/index.vue'
+import { useReact, useVuex } from '@/hooks/index'
 
 const router = useRouter()
 const route = useRoute()
@@ -52,6 +50,8 @@ onBeforeUnmount(() => {
 <template>
   <div class="home_index">
     <p>12345</p>
+    <img src="@/assets/img/logo.svg" alt="">
+    <HelloWorld></HelloWorld>
   </div>
 </template>
 

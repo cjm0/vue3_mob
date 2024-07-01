@@ -66,20 +66,23 @@ function registerServiceWorker() {
   }
 }
 
-onMounted(() => {
-  fastClick()
-  registerServiceWorker()
-
-  /*
-    处理加载报错：
-    * 当 Vite 加载动态导入失败时会触发 vite:preloadError 事件
-    * 重新部署时，托管服务可能会删除之前部署的资源
-    * 用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除
-   */
+/*
+  处理加载报错：
+  * 当 Vite 加载动态导入失败时会触发 vite:preloadError 事件
+  * 重新部署时，托管服务可能会删除之前部署的资源
+  * 用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除
+*/
+function preloadError() {
   window.addEventListener('vite:preloadError', (event) => {
     console.error('vite:preloadError', event.payload)
     window.location.reload() // 刷新页面
   })
+}
+
+onMounted(() => {
+  fastClick()
+  // registerServiceWorker()
+  preloadError()
 })
 </script>
 

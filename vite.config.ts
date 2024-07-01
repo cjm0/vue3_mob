@@ -27,13 +27,6 @@ export default defineConfig(async ({ mode, command }) => {
     resolve: {
       alias: {
         '@': getUrl('./src'),
-        '@assets': getUrl('./src/assets'),
-        '@components': getUrl('./src/components'),
-        '@hooks': getUrl('./src/hooks'),
-        '@pages': getUrl('./src/pages'),
-        '@service': getUrl('./src/service'),
-        '@stores': getUrl('./src/stores'),
-        '@utils': getUrl('./src/utils'),
       },
     },
     define: {
@@ -51,17 +44,18 @@ export default defineConfig(async ({ mode, command }) => {
       },
       cors: true, // 允许开发时 ajax 跨域
       open: true, // 自动在浏览器中打开应用程序
-      /* warmup: { // 预热常用文件：提前转换和缓存文件，提高启动速度并防止转换瀑布
-        clientFiles: [
-          './src/components/BigComponent.vue',
-          './src/utils/big-utils.js',
-        ],
-      }, */
+      // warmup: { // 预热常用文件：提前转换和缓存文件，提高启动速度并防止转换瀑布
+      //   clientFiles: ['./src/components/*.vue', './src/utils/big-utils.js'],
+      // },
       proxy: {
         '/api/v2/person': { // 医疗 crm api 请求
           target: 'https://crmtest.pkuih.edu.cn:9004',
           changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
           secure: false, // 设置为 false，接受 https
+        },
+        // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io
+        '/socket.io': {
+          target: 'ws://localhost:5174',
           ws: true,
         },
       },
@@ -83,7 +77,7 @@ export default defineConfig(async ({ mode, command }) => {
       preprocessorOptions: {
         less: {
           // 自动为 vue 文件注入 mixin.less
-          additionalData: `@import "@assets/style/mixin.less";`,
+          additionalData: `@import "@/assets/style/mixin.less";`,
         },
       },
     },
@@ -99,7 +93,7 @@ export default defineConfig(async ({ mode, command }) => {
       target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
       cssCodeSplit: true, // 启用 css 代码拆分，关闭则所有 css 打包到一个文件
       assetsInlineLimit: 4096, // 小于 4kb 的资源内联为 base64，0 完全禁用此项
-      chunkSizeWarningLimit: 1000, // 1000kb 触发警告的 chunk 大小
+      chunkSizeWarningLimit: 500, // 500kb 触发警告的 chunk 大小
       reportCompressedSize: false, // true gzip 压缩大小报告，有大文件可关闭提高速度
       sourcemap: VITE_BUILD_ENV !== 'prod', // 非生产环境
       manifest: true, // 在 outDir 中生成 .vite/manifest.json

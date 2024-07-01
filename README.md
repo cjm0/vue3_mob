@@ -23,6 +23,8 @@ npm run preview
 
 // 单元测试
 npm run test:unit
+npm run test:unit:coverage // 出测试报告
+npm run test:unit:ui // 本地查看测试报告
 
 // e2e测试
 npm run test:e2e:dev
@@ -79,7 +81,7 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 ## 插件版本
 
-- node >= 18
+- node ^18.0.0 || >=20.0.0
 - vue ^3.4.29
 - vue-router ^4.3.3
 - pina ^2.1.7
