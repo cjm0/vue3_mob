@@ -5,15 +5,17 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*"
+    "playwright.config.*",
+    "vite_config/*.ts",
   ],
   "compilerOptions": {
     "composite": true,
-    "noEmit": true,
+    "noEmit": true, // 不生成编译文件
+    "allowImportingTsExtensions": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
 
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "types": ["node"]
+    "module": "ESNext", // 指定要使用的模板标准
+    "moduleResolution": "Bundler", // 用于选择模块解析策略
+    "types": ["node"] // 指定引入的类型声明文件
   }
 }

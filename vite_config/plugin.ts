@@ -1,4 +1,3 @@
-
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
@@ -10,11 +9,11 @@ import { viteVConsole } from 'vite-plugin-vconsole'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import viteRestart from 'vite-plugin-restart'
 
-import { splitVendorChunkPlugin } from 'vite'
+// import { splitVendorChunkPlugin } from 'vite'
 import viteCompression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer'
 
-export function createVitePlugins(ISESM, entry, VITE_BUILD_ENV) {
+export function createVitePlugins(ISESM: boolean, entry: string, VITE_BUILD_ENV: string) {
   return [
     vue({
       template: {
@@ -30,7 +29,13 @@ export function createVitePlugins(ISESM, entry, VITE_BUILD_ENV) {
     vueSetupExtend(),
     // 自动引入 vue 方法：https://www.npmjs.com/package/unplugin-auto-import
     autoImport({
-      imports: [ 'vue', 'vue-router', ],
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      imports: [ 'vue', 'vue-router', 'pinia'],
       dts: 'types/auto-imports.d.ts', // 生成 ts 声明文件
     }),
     // 自动引入 vue components 组件：https://www.npmjs.com/package/unplugin-vue-components
@@ -108,12 +113,12 @@ export function createVitePlugins(ISESM, entry, VITE_BUILD_ENV) {
     },
 
     /*
-      包分割
+      包分割，已废弃
       1. 默认第三方包和业务在一个 chunk 中
       2. splitVendorChunkPlugin 将 chunk 分割为 index 和 vendor
       3. 用了 manualChunks 自定义就不能用 splitVendorChunkPlugin
      */
-    splitVendorChunkPlugin(),
+    // splitVendorChunkPlugin(),
     // gzip 压缩：https://github.com/vbenjs/vite-plugin-compression/tree/main#readme
     {
       ...viteCompression({

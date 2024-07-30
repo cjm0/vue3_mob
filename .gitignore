@@ -1,3 +1,9 @@
+# /dist 基于 .gitignore 文件
+# dist 目录加文件
+# dsit/ 目录
+# * 任意字符不包含 /
+# ** 任意字符包含 /
+
 # Logs
 logs
 *.log
@@ -15,13 +21,13 @@ dist-ssr
 
 # 忽略测试报告
 coverage
-/report/
+report/
 /cypress/videos/
 /cypress/screenshots/
 
 # 忽略 types 自动生成的 ts 类型文件
-/types/auto-imports.d.ts
-/types/components.d.ts
+types/auto-imports.d.ts
+types/components.d.ts
 
 # Editor directories and files
 .vscode/*

@@ -5,8 +5,6 @@
  * @LastEditTime: 2023-04-03 19:43:39
  */
 
-import { inject } from 'vue'
-
 const $axios = inject('$axios')
 const api = '/gj/v1'
 

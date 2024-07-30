@@ -4,8 +4,6 @@
  * @Date        : 2023-05-26 16:45:59
  */
 
-import { reactive } from 'vue'
-
 const list = reactive({
   name: 'cjm100'
 })

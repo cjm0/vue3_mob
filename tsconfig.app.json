@@ -6,15 +6,26 @@
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
-    "baseUrl": ".",
+    "baseUrl": ".", // 工作根目录
     "paths": {
       "@/*": ["./src/*"]
     },
-    "lib": ["DOM"],
-    "strict": true,
-    "useDefineForClassFields": true,
-    "isolatedModules": true,
-    "strictNullChecks": true,
-    "noImplicitAny": false
+
+    // @vue/tsconfig/tsconfig.dom.json 配置
+    // "module": "ESNext", // 指定模块化方案，默认 commonjs，none、commonjs、amd、umd、system、node16、nodenext、ES6、ES2020、ESNext
+    // "moduleResolution": "bundler", // 模块解析策略，默认 classic，node16、nodenext、bundler
+    // "target": "ESNext", // 指定编译出来的 js 代码版本，默认 es3，ES6、ES2020、ESNext
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"], // 需要加载的 ts 内置类型，跟三斜线指令作用相同，ES5、ES6、ES2020、ESNext、WebWorker、ScriptHost
+    // "strict": true, // 所有严格检查的总开关
+    // "strictNullChecks": true, // 严格检查空值 null、undefined
+    // "strictBindCallApply": true, // 严格检查 bind、call、apply
+    // "strictFunctionTypes": true, // 严格检查函数类型
+    // "strictPropertyInitialization": true, // 严格检查属性初始化
+    // "noImplicitAny": true, // 禁止隐式的 any 类型
+    // "noImplicitThis": true, // 禁止 this 的隐式 any
+    // "useUnknownInCatchVariables": true, // 禁止隐式的 unknown
+
+    "noImplicitAny": false, // 不允许隐式的 any 类型
+    "isolatedModules": true, // 是否将每个文件作为单独的模块
   }
 }

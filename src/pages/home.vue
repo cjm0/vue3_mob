@@ -1,68 +1,50 @@
-<script setup lang="ts">
-import { useStoreCounter } from '@/stores/counter'
-
-// import HelloWorld from '@/components/HelloWorld.vue'
+<script setup lang="ts" >
+import TheWelcome from '@/components/TheWelcome.vue'
 // import Modal from '@/components/Modal/index.vue'
-import { useReact, useVuex } from '@/hooks/index'
+import type { Ref } from 'vue'
 
 const router = useRouter()
-const route = useRoute()
-const storeCounter = useStoreCounter()
 
-// 常量数据
-
-// 响应式数据
-const state = reactive({
-  tables: [
-    {
-      name: 'cjm1',
-      age: 101
-    },
-    {
-      name: 'cjm2',
-      age: 202
-    },
-  ],
-  num: 10
-})
-const ipt = ref<HTMLInputElement | []>([])
-const hw = ref<InstanceType<typeof HelloWorld> | null>(null)
-const iptVal = ref('')
-const showModal = ref(false)
+// 数据
 
 
-// 公共函数
-
-
-// 逻辑函数
+// 函数
+function toAbout() {
+  router.push('/about?name=123')
+}
 
 
 // 生命周期
 onMounted(() => {
-  // console.log(ipt.value)
-  // console.log(hw.value.proxy)
+  console.log('onMounted')
 })
 onBeforeUnmount(() => {
-
+  console.log('onBeforeUnmount')
 })
 </script>
 
 <template>
   <div class="home_index">
-    <p>12345</p>
-    <img src="@/assets/img/logo.svg" alt="">
-    <HelloWorld></HelloWorld>
+    <p class="p"><img src="@/assets/img/logo.svg" alt="" class="logo"></p>
+    <p class="p">home</p>
+
+    <p class="p" @click="toAbout">to about</p>
+    <p class="p"></p>
+
+    <TheWelcome></TheWelcome>
   </div>
 </template>
 
 <style scoped lang="less">
 .home_index{
-  p{
-    color: var(--red);
+  .p{
     margin: 10px;
   }
-  .span{
-    letter-spacing: 0;
+  .logo{
+    width: 100px;
+  }
+  .p1{
+    color: var(--red);
   }
 }
 </style>

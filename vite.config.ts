@@ -14,7 +14,7 @@ const entry = getUrl('./src/main.ts')
 const ISESM = true // 只使用 ESM 现代浏览器
 
 // 文档：https://cn.vitejs.dev/config/shared-options.html
-export default defineConfig(async ({ mode, command }) => {
+export default defineConfig(({ mode, command }) => {
   // 加载 .env 文件
   const { VITE_BASE_URL, VITE_BUILD_ENV } = loadEnv(mode, getUrl('./env'))
 
@@ -104,16 +104,31 @@ export default defineConfig(async ({ mode, command }) => {
           chunkFileNames: `static/js/[name].[hash].js`, // 页面文件
           assetFileNames: `static/[ext]/[name].[hash][extname]`, // 资源文件
           compact: true, // 压缩 Rollup 产生的额外代码
+          manualChunks: { // 自定义公共 chunk
+            app: ['vue', 'vue-router', 'pinia', 'axios'],
+            // 把组件按组分块打包
+            // 'group-user': [
+            //   './src/UserDetails',
+            //   './src/UserDashboard',
+            // ],
+          },
           /*
-            manualChunks: { // 创建自定义的公共 chunk
-              app: ['vue', 'vue-router', 'pinia', 'axios'],
-            },
             manualChunks: id => {
-              // 将 node_modules 中的代码单独打包成一个 JS 文件
+              // 将 node_modules 中的代码打包成一个 js 文件
               if (id.includes('node_modules')) {
                 return 'vendor'
               }
-              // 每个第三方依赖都单独打包
+              // 将 node_modules 中的代码按需打包成多个 js 文件
+              if (id.includes('node_modules')) {
+                if (id.includes('ant-design-vue')){
+                  return 'ant-design-vue';
+                } else if (id.includes('echarts') || id.includes('echarts-wordcloud')){
+                  return 'echarts';
+                } else {
+                  return 'app';
+                }
+              }
+              // 将 node_modules 中的代码包每个都单独打包
               if (id.includes('node_modules')) {
                 return id
                   .toString()

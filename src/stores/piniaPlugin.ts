@@ -1,15 +1,14 @@
 import type { PiniaPluginContext } from 'pinia'
-// import debounce from 'lodash/debounce'
 
 export default function piniaPlugin({ store }: PiniaPluginContext) {
-  // context.pinia // 用 `createPinia()` 创建的 pinia。
-  // context.app // 用 `createApp()` 创建的当前应用(仅 Vue 3)。
+  // context.pinia // 用 `createPinia()` 创建的 pinia
+  // context.app // 用 `createApp()` 创建的当前应用(仅 Vue 3)
   // context.store // 该插件想扩展的 store
-  // context.options // 定义传给 `defineStore()` 的 store 的可选对象。
+  // context.options // 定义传给 `defineStore()` 的 store 的可选对象
 
   // 添加全局对象
   store.global = {}
-  if (import.meta.env.VITE_APP_BUILD_ENV === 'dev') {
+  if (import.meta.env.VITE_BUILD_ENV === 'dev') {
     // 任何由插件返回的属性都会被 devtools 自动追踪，赋值追踪需要手动加
     store._customProperties.add('global')
   }
@@ -17,6 +16,9 @@ export default function piniaPlugin({ store }: PiniaPluginContext) {
   // 响应 store 变化
   store.$subscribe((mutation, state) => {
     console.log(`${mutation.storeId} state: ${JSON.stringify(state)}`)
+
+    // 每当状态发生变化时，将整个 state 持久化到本地存储
+    // localStorage.setItem(mutation.storeId, JSON.stringify(state))
   })
 
   // 响应 store actions

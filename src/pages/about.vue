@@ -9,7 +9,7 @@ const a = 100
 
 <template>
   <div class="about_index">
-    <h1>This is an about page {{ a }}</h1>
+    <h1>This is an about page {{ a }} router</h1>
     <p>count: {{ count() }}</p>
     <p>name: {{ list.name }}</p>
   </div>

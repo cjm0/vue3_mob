@@ -1,9 +1,5 @@
-#!/bin/sh
+# .husky/pre-commit
 
 # 控制 git commit 提交前执行
-
-. "$(dirname "$0")/_/husky.sh"
-. "$(dirname "$0")/common.sh"
-
 # npx --no-install lint-staged
 # npx lint-staged

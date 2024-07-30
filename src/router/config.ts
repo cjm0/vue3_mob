@@ -2,7 +2,7 @@ export default [
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/pages/about.vue'),
+    component: () => import('@/pages/about.vue')
   },
   {
     path: '/:pathMatch(.*)*',

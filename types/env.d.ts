@@ -8,8 +8,8 @@
 
 // 宿主变量类型定义
 declare interface Window {
-  WXEnvironment: any,
-  WeixinJSBridge: any,
+  readonly WXEnvironment: any,
+  readonly WeixinJSBridge: any,
   $config: object,
   $cookie(name: string, value: any, options: any): any
 }

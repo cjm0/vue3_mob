@@ -4,7 +4,6 @@
  * @Date        : 2023-04-03 18:34:56
  */
 
-import { ref } from 'vue'
 import type { Ref } from 'vue'
 import useEvent from './event'
 

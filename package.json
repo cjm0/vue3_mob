@@ -19,7 +19,7 @@
     "test:unit:ui": "vitest --ui",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "prepare": "husky install",
+    "prepare": "husky",
     "format": "prettier --write src/",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .eslintignore"
   },
@@ -30,12 +30,12 @@
     ]
   },
   "dependencies": {
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "fastclick": "^1.0.6",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "pinia": "^2.2.0",
+    "vue": "^3.4.34",
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -45,7 +45,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.14.5",
     "@vitejs/plugin-legacy": "^5.4.1",
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.1.1",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
