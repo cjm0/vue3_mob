@@ -37,3 +37,17 @@ export default {
     'subject-full-stop': [2, 'never', '.'], // 标题不能以 . 结束
   },
 }
+
+/*
+  <type>[scope]: <subject>
+
+  [body]
+
+  [footer]
+
+  fix(pages/home): update title
+
+  The old title is overdated
+
+  Issues: https://github.com/conventional-changelog/commitlint/issues/2507
+ */

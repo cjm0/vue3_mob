@@ -43,6 +43,41 @@ npm run transform // 检查频繁使用的文件
 npm run hmr // 检查 Vite 循环依赖路径
 ```
 
+## 项目结构
+
+```js
+├── src                             // 开发目录
+│   ├── assets                      // 静态资源
+│   ├── components                  // 公共组件
+│   ├── hooks                       // hooks 方法
+│   ├── pages                       // 页面文件
+│   ├── router                      // 路由文件
+│   ├── service                     // 接口请求 api
+│   ├── stores                      // pinia 共享数据
+│   ├── tests                       // 单元测试
+│   └── utils                       // 公共方法
+├── .husky                          // 代码提交检查
+│   ├── commit-msg                  // git commit 检查
+│   ├── pre-commit                  // eslint 检查
+├── dist                            // 打包产出目录
+├── env                             // 自定义环境变量
+├── public                          // 不打包直接复制
+├── report                          // 报告文件
+│   ├── unit-ui                     // 测试报告
+│   ├── visualizer.html             // 打包分析
+├── types                           // ts 公共类型定义
+│   ├── commit-msg                  // git commit 检查
+│   ├── pre-commit                  // eslint 检查
+├── vite_config                     // vite 插件配置
+├── vite.config.ts                  // vite 配置文件
+├── vitest.config.ts                // vitest 测试配置文件
+├── cypress                         // cypress e2e 测试目录
+├── cypress.config.ts               // cypress e2e 测试配置文件
+├── .browserslistrc                 // 浏览器适配版本配置文件
+├── commitlint.config.js            // git commit 提交规范文件
+└── README.md                       // 项目文档
+```
+
 ## 编辑器插件
 
 [VSCode 插件集合](https://code.visualstudio.com/)
@@ -55,7 +90,18 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-## 文档地址
+## 插件版本
+
+- vue ^3.4.34
+- vue-router ^4.4.0
+- pina ^2.2.0
+- axios ^1.7.2
+- @vueuse/core ^10.11.0
+- vite 5.3.1
+- eslint ^8.57.0
+- node ^18.0.0 || >=20.0.0
+
+## 插件地址
 
 - [Vue3](https://cn.vuejs.org/guide/introduction.html)
 
@@ -64,6 +110,8 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 - [Pina](https://pinia.vuejs.org/zh/introduction.html)
 
 - [Axios](https://www.axios-http.cn/docs/intro)
+
+- [VueUse](https://vueuse.org/guide/)
 
 - [Vite5](https://cn.vitejs.dev/guide)
 - [Vite 资源集合](https://github.com/vitejs/awesome-vite)
@@ -77,33 +125,29 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 - [ESLint](https://eslint.org/)
 
-- [esbuild](https://www.esbuild.cn/)
+- [ESbuild](https://www.esbuild.cn/)
 
 - [Rollup](https://www.rollupjs.com/)
-
-## 插件版本
-
-- vue ^3.4.34
-- vue-router ^4.4.0
-- pina ^2.2.0
-- axios ^1.7.2
-- @vueuse/core ^10.11.0
-- vite 5.3.1
-- eslint ^8.57.0
-- node ^18.0.0 || >=20.0.0
 
 ## Git 提交规范
 
 1. dev 分支上线后要及时删除
 
 2. 提交示例：
-  ```bash
-    fix(pages/home): update title
 
-    The old title is overdated
+```bash
+  fix(pages/home): update title
 
-    Issues: https://github.com/conventional-changelog/commitlint/issues/2507
-  ```
+  The old title is overdated
+
+  Issues: https://github.com/conventional-changelog/commitlint/issues/2507
+
+  <type>[scope]: <subject>
+
+  [body]
+
+  [footer]
+```
 
 3. 类型
 - feat：增加新功能（feature）
