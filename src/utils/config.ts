@@ -1,5 +1,5 @@
 /**
- * @Description : 配置数据 $config 挂载到 window
+ * @Description : 全局配置数据 $config 挂载到 window
  * @Author      : chenjianmin
  * @Date        : 2023-04-03 17:02:46
  */
@@ -35,5 +35,3 @@ window.$config = {
       screen.width === 375,
   },
 }
-
-export {}

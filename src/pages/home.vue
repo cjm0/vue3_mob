@@ -2,15 +2,30 @@
 import TheWelcome from '@/components/TheWelcome.vue'
 // import Modal from '@/components/Modal/index.vue'
 import type { Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+defineOptions({
+  name: 'HomeIndex',
+})
+
+const { t, locale } = useI18n()
 const router = useRouter()
 
 // 数据
+let ref1 = markRaw({
+  namespace: '123',
+  name: '123',
+})
+console.log(333, isProxy(ref1), reactive(ref1))
+
 
 
 // 函数
 function toAbout() {
   router.push('/about?name=123')
+}
+function changeRef1() {
+  locale.value = 'en-US'
 }
 
 
@@ -27,9 +42,11 @@ onBeforeUnmount(() => {
   <div class="home_index">
     <p class="p"><img src="@/assets/img/logo.svg" alt="" class="logo"></p>
     <p class="p">home</p>
-
     <p class="p" @click="toAbout">to about</p>
-    <p class="p"></p>
+
+    <p @click="changeRef1">
+      {{ t('age', { age: 20 }) }}
+    </p>
 
     <TheWelcome></TheWelcome>
   </div>

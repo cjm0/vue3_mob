@@ -4,8 +4,9 @@
  * @Date        : 2023-04-03 19:23:45
  */
 
+import $axios from '@/utils/axios'
+
 export default function useFetch(url: string, datas: object, method = 'get'): object {
-  const $axios: any = inject('$axios')
   const data = ref(null)
   const error = ref(null)
 

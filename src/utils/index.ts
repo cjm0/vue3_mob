@@ -1,5 +1,6 @@
 /**
- * @Description : 常用方法函数 import { injectKey } from @utils
+ * @Description : 常用方法函数
+ * @Use         : import { formatDate } from @utils
  * @Author      : chenjianmin
  * @Date        : 2023-04-03 17:02:46
  */
@@ -30,13 +31,32 @@ function formatDate(time, format) {
   }
   return format
 }
+/**
+ * 根据生日获取年龄，国际惯例按周岁算法计算
+ * @param {number} y 年
+ * @param {number} m 月
+ * @param {number} d 日
+ * @return {number} age 年龄
+ */
+function getAge(y, m, d) {
+  // 周岁算法：出生时为零岁，每到一个公历生日长一岁
+  // 虚岁算法：一出生一岁，每过一个春节长一岁
+  const now = formatDate(new Date(), 'yyyy-MM-dd').split('-')
+  const month = now[1] - m
+  const day = now[2] - d
+  let age = now[0] - y - 1
+  if (month > 0 || (month === 0 && day > 0)) {
+    age += 1
+  }
+  age = age >= 0 ? age : 0
+  return age
+}
 
 // 获取数据类型 boolean array asyncfunction generatorfunction
 function getTypeOf(obj) {
   const str = Object.prototype.toString.call(obj);
   return str.match(/\[object (.*?)\]/)[1].toLowerCase();
 }
-
 // 有效值
 function truthy(val) {
   if (val && val != 'undefined' && val != 'null' && val != 'NaN') {
@@ -49,12 +69,10 @@ function truthy(val) {
 function fullNumber(n) {
   return n > 9 ? n : '0' + n
 }
-
 // 去除头尾空白字符
 function trim(s) {
   return s.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 }
-
 // 电话号码加 *
 function encryptPhone(s){
   if (!s) {
@@ -62,7 +80,6 @@ function encryptPhone(s){
   }
   return s.slice(0, 3) + '****' + s.slice(7);
 }
-
 // 证件号加 *
 function encryptId(s) {
   if (!s) {
@@ -75,7 +92,6 @@ function encryptId(s) {
 function getRandomStr() {
   return Math.random().toString(36).substr(2, 15)
 }
-
 // 时间戳，字符串
 function getTimeStamp() {
   return parseInt(new Date().getTime() / 1000) + ''
@@ -105,7 +121,6 @@ function getUrlParams(url, type) {
     hash: tag.hash,
   }
 }
-
 // 对象转字符串
 function obj2str(obj, encode) {
   let str = ''
@@ -115,30 +130,9 @@ function obj2str(obj, encode) {
   return str.slice(1)
 }
 
-
-/**
- * 根据生日获取年龄，国际惯例按周岁算法计算
- * @param {number} y 年
- * @param {number} m 月
- * @param {number} d 日
- * @return {number} age 年龄
- */
-function getAge(y, m, d) {
-  // 周岁算法：出生时为零岁，每到一个公历生日长一岁
-  // 虚岁算法：一出生一岁，每过一个春节长一岁
-  const now = formatDate(new Date(), 'yyyy-MM-dd').split('-')
-  const month = now[1] - m
-  const day = now[2] - d
-  let age = now[0] - y - 1
-  if (month > 0 || (month === 0 && day > 0)) {
-    age += 1
-  }
-  age = age >= 0 ? age : 0
-  return age
-}
-
 export {
   formatDate,
+  getAge,
   getTypeOf,
   truthy,
   fullNumber,
@@ -149,5 +143,4 @@ export {
   getTimeStamp,
   getUrlParams,
   obj2str,
-  getAge,
 }

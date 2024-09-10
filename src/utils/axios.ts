@@ -1,8 +1,9 @@
 /*
- * @Description : d
+ * @Description : axios 配置
  * @Author      : chenjianmin
  * @Date        : 2023-04-03 18:25:22
  */
+
 import axios from 'axios'
 
 // axios.defaults.withCredentials = true // 是否携带cookie信息
@@ -32,12 +33,14 @@ axios.interceptors.response.use(
 )
 
 // 用于请求之前对请求数据进行操作
-/* axios.defaults.transformRequest = [function (data) {
+/*
+axios.defaults.transformRequest = [function (data) {
   var ret = []
   for (var it in data) {
     ret.push(encodeURIComponent(it) + '=' + encodeURIComponent(data[it]))
   }
   return ret.join('&')
-}] */
+}]
+*/
 
 export default axios

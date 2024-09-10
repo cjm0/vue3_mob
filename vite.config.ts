@@ -30,8 +30,9 @@ export default defineConfig(({ mode, command }) => {
       },
     },
     define: {
-      __VUE_OPTIONS_API__: true, // true-启用 false-禁用选项API支持，默认 true
-      __VUE_PROD_DEVTOOLS__: VITE_BUILD_ENV !== 'prod', // 在生产中启用/禁用 DEVTOOLS 支持，默认 false
+      __VUE_OPTIONS_API__: 'true', // 是否支持选项式 API，默认 'true'
+      __VUE_PROD_DEVTOOLS__: VITE_BUILD_ENV === 'prod' ? 'false' : 'true', // 在生产环境中是否支持开发者工具，默认 'false'
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: VITE_BUILD_ENV === 'test' ? 'true' : 'false', // 生产环境构建下是否激活 (hydration) 不匹配的详细警告。启用会在打包结果中包含更多代码，因此建议仅在调试时启用此功能，默认 'false'
     },
 
     // 服务器代理
@@ -105,7 +106,7 @@ export default defineConfig(({ mode, command }) => {
           assetFileNames: `static/[ext]/[name].[hash][extname]`, // 资源文件
           compact: true, // 压缩 Rollup 产生的额外代码
           manualChunks: { // 自定义公共 chunk
-            app: ['vue', 'vue-router', 'pinia', 'axios'],
+            app: ['vue', 'vue-router', 'pinia', 'axios', 'vue-i18n'],
             // 把组件按组分块打包
             // 'group-user': [
             //   './src/UserDetails',

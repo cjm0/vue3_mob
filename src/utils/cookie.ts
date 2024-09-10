@@ -1,60 +1,49 @@
 /**
- * @Description : 封装 $cookie 挂载到 window
+ * @Description : 封装 cookie 方法
+ * @Use         : import { getCookie } from @utils/cookie
  * @Author      : chenjianmin
  * @Date        : 2023-04-03 17:02:46
  */
 
-interface param {
+interface Cookie {
   name: string,
-  value: any,
+  value: string,
   domain?: string,
   path?: string,
   day?: number
 }
 
-const Cookie = {
-  read(name: param['name']): param['value'] {
-    const value = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)')
-    return value ? decodeURIComponent(value[1]) : null
-  },
-  write(value: param): void {
-    let str = value.name + '=' + encodeURIComponent(value.value)
-    if (value.domain) {
-      str += '; domain=' + value.domain
-    }
-    if (value.path) {
-      str += '; path=' + value.path
-    }
-    if (value.day) {
-      const time = new Date()
-      time.setTime(time.getTime() + value.day * 24 * 60 * 60 * 1000)
-      str += '; expires=' + time.toUTCString()
-    }
-    document.cookie = str
-  },
-  dispose(name: param['name']): void {
-    const str = this.read(name)
-    this.write({
-      name: name,
-      value: str,
-      day: -1,
-    })
-  },
+const getCookie = (name:Cookie['name']):Cookie['value'] => {
+  const value = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)')
+  return value ? decodeURIComponent(value[1]) : ''
 }
 
-window.$cookie = (name, value, options) => {
-  if (typeof value === 'undefined') {
-    return Cookie.read(name)
-  } else {
-    if (value === null) {
-      return Cookie.dispose(name)
-    } else {
-      options = options || {}
-      options.name = name
-      options.value = value
-      return Cookie.write(options)
-    }
+const setCookie = (option:Cookie):void => {
+  let str = option.name + '=' + encodeURIComponent(option.value)
+  if (option.domain) {
+    str += '; domain=' + option.domain
   }
+  if (option.path) {
+    str += '; path=' + option.path
+  }
+  if (option.day) {
+    const time = new Date()
+    time.setTime(time.getTime() + option.day * 24 * 60 * 60 * 1000)
+    str += '; expires=' + time.toUTCString()
+  }
+  document.cookie = str
 }
 
-export {}
+const clearCookie = (name:Cookie['name']):void => {
+  setCookie({
+    name: name,
+    value: getCookie(name),
+    day: -1,
+  })
+}
+
+export {
+  getCookie,
+  setCookie,
+  clearCookie,
+}

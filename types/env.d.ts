@@ -6,20 +6,16 @@
     import.meta.hot 上的 HMR API 类型定义
  */
 
-// 宿主变量类型定义
-declare interface Window {
-  readonly WXEnvironment: any,
-  readonly WeixinJSBridge: any,
-  $config: object,
-  $cookie(name: string, value: any, options: any): any
-}
-
 // 自定义全局环境变量
 interface ImportMetaEnv {
   readonly VITE_BASE_URL: string
   readonly VITE_BUILD_ENV: string
-  // 更多环境变量...
 }
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+
+// 给 Window 添加属性和方法
+declare interface Window {
+  readonly WXEnvironment: any,
+  readonly WeixinJSBridge: any,
+  $config: object,
 }
+

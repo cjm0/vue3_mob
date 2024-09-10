@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+// import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import autoImport from 'unplugin-auto-import/vite'
 import vueComponents from 'unplugin-vue-components/vite'
 import legacy from '@vitejs/plugin-legacy'
@@ -25,8 +25,8 @@ export function createVitePlugins(ISESM: boolean, entry: string, VITE_BUILD_ENV:
     }),
     // 支持 jsx/tsx 语法
     vueJsx(),
-    // 给 vue3 setup 扩展 name 属性
-    vueSetupExtend(),
+    // 给 vue3 setup 扩展 name 属性，3.3+ 可通过 defineOptions() 设置
+    // vueSetupExtend(),
     // 自动引入 vue 方法：https://www.npmjs.com/package/unplugin-auto-import
     autoImport({
       include: [

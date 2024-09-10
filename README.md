@@ -47,18 +47,21 @@ npm run hmr // 检查 Vite 循环依赖路径
 
 ```js
 ├── src                             // 开发目录
+│   ├── api                         // 接口请求 api
 │   ├── assets                      // 静态资源
+│       ├── img                     // 公共图片
+│       ├── style                   // 公共样式
 │   ├── components                  // 公共组件
 │   ├── hooks                       // hooks 方法
 │   ├── pages                       // 页面文件
 │   ├── router                      // 路由文件
-│   ├── service                     // 接口请求 api
 │   ├── stores                      // pinia 共享数据
 │   ├── tests                       // 单元测试
 │   └── utils                       // 公共方法
 ├── .husky                          // 代码提交检查
 │   ├── commit-msg                  // git commit 检查
 │   ├── pre-commit                  // eslint 检查
+├── back_file                       // 存放废弃文件
 ├── dist                            // 打包产出目录
 ├── env                             // 自定义环境变量
 ├── public                          // 不打包直接复制
@@ -73,7 +76,7 @@ npm run hmr // 检查 Vite 循环依赖路径
 ├── vitest.config.ts                // vitest 测试配置文件
 ├── cypress                         // cypress e2e 测试目录
 ├── cypress.config.ts               // cypress e2e 测试配置文件
-├── .browserslistrc                 // 浏览器适配版本配置文件
+├── .browserslistrc                 // 浏览器兼容配置文件
 ├── commitlint.config.js            // git commit 提交规范文件
 └── README.md                       // 项目文档
 ```
