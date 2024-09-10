@@ -1,9 +1,9 @@
 /*
  * @Description : useReact
  * @Usage       :
-                  const [count, setCount] = useReact(0)
-                  count() // 访问值
-                  setCount(1) // 更新值
+    const [count, setCount] = useReact(0)
+    count() // 访问值
+    setCount(1) // 更新值
  * @Author      : chenjianmin
  * @Date        : 2023-05-26 16:45:59
  */

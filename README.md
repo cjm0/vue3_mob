@@ -78,6 +78,7 @@ npm run hmr // 检查 Vite 循环依赖路径
 ├── cypress.config.ts               // cypress e2e 测试配置文件
 ├── .browserslistrc                 // 浏览器兼容配置文件
 ├── commitlint.config.js            // git commit 提交规范文件
+├── CHANGELOG.md                    // 版本更新日志
 └── README.md                       // 项目文档
 ```
 
@@ -98,9 +99,9 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 - vue ^3.4.34
 - vue-router ^4.4.0
 - pina ^2.2.0
-- axios ^1.7.2
-- @vueuse/core ^10.11.0
+- @vueuse/core ^11.0.3
 - vite 5.3.1
+- axios ^1.7.2
 - eslint ^8.57.0
 - node ^18.0.0 || >=20.0.0
 

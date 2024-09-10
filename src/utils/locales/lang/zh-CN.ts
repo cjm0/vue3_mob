@@ -1,5 +1,5 @@
 /*
- * @Description : 中文语言包 zh.ts
+ * @Description : 中文语言包 zh-CN.ts
  * @Author      : chenjianmin
  * @Date        : 2024-09-09 18:24:56
  */

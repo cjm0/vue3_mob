@@ -1,8 +1,9 @@
 <script setup lang="ts" >
 import TheWelcome from '@/components/TheWelcome.vue'
 // import Modal from '@/components/Modal/index.vue'
-import type { Ref } from 'vue'
+
 import { useI18n } from 'vue-i18n'
+import type { Ref } from 'vue'
 
 defineOptions({
   name: 'HomeIndex',

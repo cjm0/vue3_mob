@@ -1,10 +1,10 @@
 /*
  * @Description : useAngular
  * @Usage       :
-                  const count = useAngular(0)
-                  count() // 访问值
-                  count.set(1) // 设置值
-                  count.update((v) => v + 1) // 通过前值更新
+    const count = useAngular(0)
+    count() // 访问值
+    count.set(1) // 设置值
+    count.update((v) => v + 1) // 通过前值更新
  * @Author      : chenjianmin
  * @Date        : 2024-09-08 20:23:22
  */

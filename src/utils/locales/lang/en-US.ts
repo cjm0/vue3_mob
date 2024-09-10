@@ -1,5 +1,5 @@
 /*
- * @Description : 英文语言包 en.ts
+ * @Description : 英文语言包 en-US.ts
  * @Author      : chenjianmin
  * @Date        : 2024-09-09 18:25:09
  */

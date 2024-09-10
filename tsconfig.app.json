@@ -30,11 +30,10 @@
     // "strictBindCallApply": true, // 严格检查 bind、call、apply
     // "strictFunctionTypes": true, // 严格检查函数类型
     // "strictPropertyInitialization": true, // 严格检查属性初始化
-    // "noImplicitAny": true, // 禁止隐式的 any 类型
+
+    "noImplicitAny": true, // 禁止隐式的 any 类型
     // "noImplicitThis": true, // 禁止 this 的隐式 any
     // "useUnknownInCatchVariables": true, // 禁止隐式的 unknown
-
-    "noImplicitAny": true, // 不允许隐式的 any 类型
     "isolatedModules": true, // 将每个文件作为单独的模块，不因缺少其他脚本的类型信息而报错
   }
 }
