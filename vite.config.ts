@@ -105,40 +105,52 @@ export default defineConfig(({ mode, command }) => {
           chunkFileNames: `static/js/[name].[hash].js`, // 页面文件
           assetFileNames: `static/[ext]/[name].[hash][extname]`, // 资源文件
           compact: true, // 压缩 Rollup 产生的额外代码
-          manualChunks: { // 自定义公共 chunk
-            app: ['vue', 'vue-router', 'pinia', 'axios', 'vue-i18n'],
-            // 把组件按组分块打包
-            // 'group-user': [
-            //   './src/UserDetails',
-            //   './src/UserDashboard',
-            // ],
-          },
           /*
-            manualChunks: id => {
-              // 将 node_modules 中的代码打包成一个 js 文件
-              if (id.includes('node_modules')) {
-                return 'vendor'
-              }
-              // 将 node_modules 中的代码按需打包成多个 js 文件
-              if (id.includes('node_modules')) {
-                if (id.includes('ant-design-vue')){
-                  return 'ant-design-vue';
-                } else if (id.includes('echarts') || id.includes('echarts-wordcloud')){
-                  return 'echarts';
-                } else {
-                  return 'app';
-                }
-              }
-              // 将 node_modules 中的代码包每个都单独打包
-              if (id.includes('node_modules')) {
-                return id
-                  .toString()
-                  .split('node_modules/')[1]
-                  .split('/')[0]
-                  .toString();
-              }
-            }
+          manualChunks: { // 自定义公共 chunk
+            vendor: ['vue', 'vue-router', 'pinia', 'axios', 'vue-i18n'],
+          },
           */
+          manualChunks: id => {
+            // console.log(333, id)
+
+            // 单独打包 node_modules 中用到的代码
+            if (id.includes('node_modules')) {
+              return 'vendor'
+            }
+            // 页面拆分：可多个页面打包成一个文件
+            if (id.includes('src/pages/home')) {
+              return 'home'
+            }
+            if (id.includes('src/pages/error')) {
+              return 'error'
+            }
+
+            // 单独打包 hooks、utils
+            /* if (id.includes('src/hooks')) {
+              return 'error'
+            }
+            if (id.includes('src/utils')) {
+              return 'error'
+            } */
+            // 将 node_modules 中的代码按需打包成多个 js 文件
+            /* if (id.includes('node_modules')) {
+              if (id.includes('ant-design-vue')){
+                return 'ant-design-vue';
+              } else if (id.includes('echarts') || id.includes('echarts-wordcloud')){
+                return 'echarts';
+              } else {
+                return 'app';
+              }
+            } */
+            // 将 node_modules 中的代码包每个都单独打包
+            /* if (id.includes('node_modules')) {
+              return id
+                .toString()
+                .split('node_modules/')[1]
+                .split('/')[0]
+                .toString();
+            } */
+          }
         },
       },
     },

@@ -13,13 +13,11 @@ const { t, locale } = useI18n()
 const router = useRouter()
 
 // 数据
-let ref1 = markRaw({
-  namespace: '123',
-  name: '123',
+const refaList = reactive({
+  name1: 'cjm1',
+  age1: 18,
 })
-console.log(333, isProxy(ref1), reactive(ref1))
-
-
+console.log('refa', Object.assign(refaList, { name1: 'cjm2' }))
 
 // 函数
 function toAbout() {

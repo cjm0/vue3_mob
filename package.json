@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --mode dev",
-    "build": "vite build --mode test",
+    "build": "vite build --mode prod",
     "test": "run-p type-check && vite build --mode test",
     "pre": "run-p type-check && vite build --mode pre",
     "prod": "run-p type-check && vite build --mode prod",

@@ -45,15 +45,22 @@ npm run hmr // 检查 Vite 循环依赖路径
 
 ## 项目结构
 
+原则：层级浅、资源集中、相对独立互不影响
+
 ```js
 ├── src                             // 开发目录
-│   ├── api                         // 接口请求 api
-│   ├── assets                      // 静态资源
+│   ├── api                         // 接口 api 请求
+│   ├── assets                      // 公共静态资源
 │       ├── img                     // 公共图片
 │       ├── style                   // 公共样式
 │   ├── components                  // 公共组件
 │   ├── hooks                       // hooks 方法
-│   ├── pages                       // 页面文件
+│   ├── pages                       // 页面目录
+│       ├── img                     // 两个以上页面都用到的图片单独抽离
+│       ├── home                    // 首页
+│           ├── home.vue            // 页面文件
+│           ├── home.less           // 页面样式
+│           ├── good.png            // 本页独自使用的图片
 │   ├── router                      // 路由文件
 │   ├── stores                      // pinia 共享数据
 │   ├── tests                       // 单元测试
