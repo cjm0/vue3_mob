@@ -37,7 +37,7 @@ module.exports = {
     'vue/multi-word-component-names': 0, // 要求组件名称总是多个单词
     'vue/one-component-per-file': 0, // 强制每个组件应该在它自己的文件中
 
-    'no-unused-vars': ['error', { // 不要定义未使用的变量
+    'no-unused-vars': [2, { // 不要定义未使用的变量
       'vars': 'all', // 检查变量 all local
       'args': 'after-used', // 检查参数 all after-used none
       'caughtErrors': 'all', // 错误对象 all none
@@ -59,12 +59,13 @@ module.exports = {
     'no-whitespace-before-property': 2, // 属性前面不要加空格
     'no-unused-expressions': 2, // 禁止无用的表达式
     'no-multi-str': 2, // 字符串不能用\换行
+    'complexity': [2, 10], // 圈复杂度超过10的警告
 
-    'indent': [0, 2], // 2 4个空格 [1, 2] [1, 4] [1, 'tab']
-    'quotes': [0, 'single'], // 使用单引号
-    'no-debugger': 0, // allow debugger during development
-    'no-alert': 0, // alert
-    'no-console': 0, // 提示console
+    'indent': [1, 2], // 2 4个空格 [1, 2] [1, 4] [1, 'tab']
+    'quotes': [1, 'single'], // 使用单引号
+    'no-debugger': 1, // allow debugger during development
+    'no-alert': 1, // alert
+    'no-console': 1, // 提示console
     'no-unneeded-ternary': 1, // 禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     'keyword-spacing': 1, // 关键字后面加空格
     'comma-spacing': 1, // 逗号后面加空格

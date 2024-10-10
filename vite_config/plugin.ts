@@ -7,10 +7,11 @@ import legacy from '@vitejs/plugin-legacy'
 
 import { viteVConsole } from 'vite-plugin-vconsole'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import Inspect from 'vite-plugin-inspect'
 import viteRestart from 'vite-plugin-restart'
 
 // import { splitVendorChunkPlugin } from 'vite'
-import viteCompression from 'vite-plugin-compression';
+import viteCompression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export function createVitePlugins(ISESM: boolean, entry: string, VITE_BUILD_ENV: string) {
@@ -100,6 +101,7 @@ export function createVitePlugins(ISESM: boolean, entry: string, VITE_BUILD_ENV:
     // vite 开发环境调试工具
     // 仅支持：开发模式、Vue3.0+、仅支持单实例 Vue 应用程序、不支持 SSR (Nuxt 请使用 nuxt/devtools)
     vueDevTools(),
+    Inspect(), // serve 开发环境：localhost:5173/__inspect/ 
     // 自动重启 vite 服务：https://www.npmjs.com/package/vite-plugin-restart
     // 监听文件变化，自动重启 vite 服务
     {
