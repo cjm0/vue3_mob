@@ -37,12 +37,11 @@ module.exports = {
     'vue/multi-word-component-names': 0, // 要求组件名称总是多个单词
     'vue/one-component-per-file': 0, // 强制每个组件应该在它自己的文件中
 
-    'no-unused-vars': [2, { // 不要定义未使用的变量
+    'no-unused-vars': ['error', { // 不要定义未使用的变量
       'vars': 'all', // 检查变量 all local
       'args': 'after-used', // 检查参数 all after-used none
       'caughtErrors': 'all', // 错误对象 all none
       'ignoreRestSiblings': false,
-      'reportUsedIgnorePattern': false
     }],
     'no-const-assign': 2, // 避免修改使用 const 声明的变量
     'no-ex-assign': 2, // catch 中不要对错误重新赋值

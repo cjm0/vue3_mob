@@ -65,12 +65,12 @@ function registerServiceWorker() {
     window.addEventListener('load', () => {
       // scope 参数用来指定控制的子目录，默认 '/'，根网域下的所有内容
       window.navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' })
-      .then((registration) => { // 注册成功
-        console.log('serviceWorker register success with scope: ', registration.scope)
-      })
-      .catch((err) => { // 注册失败
-        console.error('serviceWorker register fail: ', err);
-      })
+        .then((registration) => { // 注册成功
+          console.log('serviceWorker register success with scope: ', registration.scope)
+        })
+        .catch((err) => { // 注册失败
+          console.error('serviceWorker register fail: ', err);
+        })
     })
   } else {
     console.error('serviceWorker 不支持')
