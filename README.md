@@ -89,6 +89,12 @@ npm run hmr // 检查 Vite 循环依赖路径
 └── README.md                       // 项目文档
 ```
 
+## 注意事项
+
+1. commit 失败 
+
+要先执行 npm install 下载插件包
+
 ## 编辑器插件
 
 [VSCode 插件集合](https://code.visualstudio.com/)
